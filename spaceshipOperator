@@ -1,0 +1,77 @@
+<?php
+
+   $gotCharacters = [
+       ['firstName' => 'John'   , 'lastName' => 'Snow'],
+       ['firstName' => 'Sansa'  , 'lastName' => 'Stark'],
+       ['firstName' => 'Arya'   , 'lastName' => 'Stark'],
+       ['firstName' => 'Jaime'  , 'lastName' => 'Lannister'],
+       ['firstName' => 'Cersei' , 'lastName' => 'Lannister'],
+       ['firstName' => 'Rob'    , 'lastName' => 'Stark'],
+       ['firstName' => 'Theon'  , 'lastName' => 'Greyjoy'],
+       ['firstName' => 'Brandon', 'lastName' => 'Stark'],
+       ['firstName' => 'Joffrey', 'lastName' => 'Baratheon'],
+       ['firstName' => 'Tywin'  , 'lastName' => 'Lannister'],
+       ['firstName' => 'John'   , 'lastName' => 'Bradley'] //sorry Sam I need another John to test
+   ];
+   
+   /*
+            /\
+           |==|
+           |  |
+           |  |
+           |  |
+          /____\
+          |    |
+          |    |
+          |    |
+          |    |
+         /| |  |\
+        / | |  | \
+       /__|_|__|__\
+          /_\/_\
+          ######
+         ########
+          ######
+           ####
+           ####
+            ##
+            ##   
+            ##
+            ##
+   */
+   
+   // spaceship operator <=>
+   //
+   // no PHP 7 no fun!
+   usort($gotCharacters, function($first, $last) {
+       return  [$first['firstName'], $first['lastName']] <=> [$last['firstName'], $last['lastName']];
+   });
+   
+   ?>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <style>
+         li{
+         font-family: Arial, serif;
+         }
+      </style>
+      <title>GoT</title>
+   </head>
+   <body>
+      <h2>Game of Thrones Characters</h2>
+      <ol>
+         <?php 
+            foreach ($gotCharacters as $char):
+                echo "<li> " . implode(' ', $char). " </li>";
+
+                //alt and old way
+                //same result
+                //echo "<li> {$char['firstName']} {$char['lastName']} </li>";
+
+            endforeach;	
+            ?>
+      </ol>
+   </body>
+</html>
