@@ -16,6 +16,15 @@ $emailTo = "EDIT THIS RECEIVER";
 $mail = new PHPMailer;
 $mail->isSMTP(); 
 $mail->SMTPDebug = 2; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
+
+$mail->SMTPOptions = array(
+    'ssl' => array(
+    'verify_peer' => false,
+    'verify_peer_name' => false,
+    'allow_self_signed' => true
+    )
+);
+
 $mail->Host = "smtp.gmail.com"; // use $mail->Host = gethostbyname('smtp.gmail.com'); // if your network does not support SMTP over IPv6
 $mail->Port = 587; // TLS only
 $mail->SMTPSecure = 'tls'; // ssl is depracated
